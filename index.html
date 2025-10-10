@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        "montserrat": ["Montserrat", "sans-serif"],
+                        "asap": ["Asap", "sans-serif"]
+                    },
+                }
+            }
+        }
+    </script>
+    <title>SmartMoving Integration</title>
+</head>
+
+<body class="bg-[#f7f7f7] flex items-center justify-center text-[17px] p-2">
+    <div class="font-montserrat p-8 rounded-2xl bg-white w-[50%]">
+        <!-- Step 1 -->
+        <div id="step1" class="flex flex-col space-y-4 hidden">
+            <div class="flex items-center justify-between space-x-4 w-full">
+                <label for="first name" class="w-full">First Name* : <br>
+                    <input type="text" placeholder="Your first name.."
+                        class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full">
+                </label>
+
+                <label for="last name" class="w-full">Last Name : <br>
+                    <input type="text" placeholder="Your last name.."
+                        class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full">
+                </label>
+            </div>
+            <label for="email" class="w-full">Email * : <br>
+                <input type="email" placeholder="Your e-mail.."
+                    class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full">
+            </label>
+            <label for="phone" class="w-full">Phone * : <br>
+                <input type="phone" placeholder="Your phone.."
+                    class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full">
+            </label>
+            <label for="communication method" class="flex flex-col space-y-2">
+                I'd preferred to be contacted via * : <br>
+                <label for="method1">
+                    <input type="radio" name="contact_method" value="call" class="accent-[#00c7b1]" id="method1">
+                    <span>Call</span>
+                    <br>
+                </label>
+                <label for="method2">
+                    <input type="radio" name="contact_method" value="Text" class="accent-[#00c7b1]" id="method2">
+                    <span>Text</span><br>
+                </label>
+            </label>
+
+            <!-- navigation buttons -->
+
+            <div class="flex justify-between">
+                <div>
+
+                </div>
+                <button id="nextSlide1" class="bg-[#00c7b1] px-3 py-2 rounded-lg text-white font-bold">Next</button>
+            </div>
+        </div>
+
+        <!-- Step-2 -->
+
+        <div id="step2" class="hidden">
+            <h3 class="text-[38px] font-bold text-center">Book Now</h3>
+            <br><br>
+            <div class="flex flex-col space-y-6">
+                <div class="flex justify-between">
+                    <label for="labor Only" class="flex flex-col space-y-2 flex-1"> Labor Only <br>
+                        <label for="Help_Moving_In">
+                            <input type="radio" name="labor Only" id="Help_Moving_In" value="Help Moving In"
+                                class="accent-[#00c7b1]" />
+                            <span>Help Moving In</span>
+                        </label>
+
+                        <label for="Help_Moving_Out">
+                            <input type="radio" name="labor Only" id="Help_Moving_Out" value="Help Moving Out"
+                                class="accent-[#00c7b1]" />
+                            <span>Help Moving Out</span>
+                        </label>
+
+                        <label for="Help_Moving_Out_&_In">
+                            <input type="radio" name="labor Only" id="Help_Moving_Out_&_In" value="Help Moving In"
+                                class="accent-[#00c7b1]" />
+                            <span>Help Moving In</span>
+                        </label>
+                    </label>
+
+                    <label for="labor and truck" class="flex flex-col space-y-2 flex-1"> LABOR & TRUCK <br>
+                        <label for="Full_Move">
+                            <input type="radio" name="labor_and_truck" id="Full_Move" value="Full Move"
+                                class="accent-[#00c7b1]" />
+                            <span>Full Move</span>
+                        </label>
+
+                        <label for="Large_Item_Transport">
+                            <input type="radio" name="labor_and_truck" id="Large_Item_Transport"
+                                value="Large Item Transport" class="accent-[#00c7b1]" />
+                            <span>Large Item Transport</span>
+                        </label>
+                    </label>
+                </div>
+
+                <!-- Moving date -->
+
+                <div>
+                    <label for="datePicker" class="block cursor-pointer">
+                        <span>MOVING DATE</span> <br>
+                        <div class="border border-[#00c7b1] rounded-lg p-2 w-full text-[#00c7b1] mt-2">
+                            <input type="date" id="datePicker"
+                                class="w-full outline-none text-black bg-transparent cursor-pointer">
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Moving time -->
+
+                <div>
+                    <label for="moving time">
+                        <select name="moving time" id="moving_time"
+                            class="border border-[#00c7b1] p-2 rounded-lg w-full outline-none">
+                            <option value="Morning">Morning</option>
+                            <option value="Mid-day">Mid-day</option>
+                            <option value="Afternoon">Afternoon</option>
+                            <option value="Evening">Evening</option>
+                            <option value="As soon as possible">As soon as possible</option>
+                        </select>
+                    </label>
+                </div>
+
+                <!-- PICKUP LOCATION -->
+
+                <label for="pickup location" class="flex flex-col space-y-2 flex-1">PICKUP LOCATION: <br>
+                    <label for="Home_Apartment">
+                        <input type="radio" name="pickup location" id="Home_Apartment" value="Home/ Apartment"
+                            class="accent-[#00c7b1]" />
+                        <span>Home/ Apartment</span>
+                    </label>
+
+                    <label for="business">
+                        <input type="radio" name="pickup location" id="business" value="Business"
+                            class="accent-[#00c7b1]" />
+                        <span>Business</span>
+                    </label>
+
+                    <label for="storage_unit">
+                        <input type="radio" name="pickup location" id="storage_unit" value="Storage Unit"
+                            class="accent-[#00c7b1]" />
+                        <span>Storage Unit</span>
+                    </label>
+                </label>
+
+                <!-- Address -->
+
+                <label for="address">ADDRESS : <br>
+                    <input type="address" name="address" id="address"
+                        class="outline-none p-2 border border-[#00c7b1] rounded-lg w-full mt-2"
+                        placeholder="your address" />
+                </label>
+
+                <!-- FLIGHTS OF STAIRS -->
+
+                <label for="flights of stairs"> FLIGHTS OF STAIRS: <br>
+                    <input type="number" name="flights of stairs" id="flights_of_stairs" placeholder="0"
+                        class="p-2 border border-[#00c7b1] rounded-lg outline-none mt-2 w-full">
+                </label>
+
+                <!-- Elevator and apartment -->
+
+                <div class="flex justify-between">
+                    <!-- Elevator -->
+
+                    <label for="elevator" class="flex flex-col space-y-2 flex-1">EVEVATOR : <br>
+                        <label for="yes">
+                            <input type="radio" name="elevator" id="yes" class="accent-[#00c7b1]" />
+                            <span>Yes</span>
+                        </label>
+                        <label for="no">
+                            <input type="radio" name="elevator" id="no" class="accent-[#00c7b1]">
+                            <span>No</span>
+                        </label>
+                    </label>
+
+                    <!-- APARTMENT -->
+
+                    <label for="apartment" class="flex flex-col space-y-2 flex-1">APARTMENT/HOME ROOMS: <br>
+                        <label for="1 Bedroom/Studio">
+                            <input type="radio" name="apartment" id="1 Bedroom/Studio" class="accent-[#00c7b1]">
+                            <span>1 Bedroom/Studio</span>
+                        </label>
+
+                        <label for="2 Bedroom">
+                            <input type="radio" name="apartment" id="2 Bedroom" class="accent-[#00c7b1]">
+                            <span>2 Bedroom</span>
+                        </label>
+
+                        <label for="3 Bedroom">
+                            <input type="radio" name="apartment" id="3 Bedroom" class="accent-[#00c7b1]">
+                            <span>3 Bedroom</span>
+                        </label>
+
+                        <label for="4+ Bedroom">
+                            <input type="radio" name="apartment" id="4+ Bedroom" class="accent-[#00c7b1]">
+                            <span>4+ Bedroom</span>
+                        </label>
+                    </label>
+                </div>
+
+                <!-- DROP OFF LOCATION -->
+
+                <label for="drop of location" class="flex flex-col space-y-2"><span>DROP OFF LOCATION:</span>
+                    <label for="home_apartment2">
+                        <input type="radio" name="drop of location" id="home_apartment2" class="accent-[#00c7b1]">
+                        <span>Home/Apartment</span>
+                    </label>
+
+                    <label for="business2">
+                        <input type="radio" name="drop of location" id="business2" class="accent-[#00c7b1]">
+                        <span>Business</span>
+                    </label>
+
+                    <label for="storage_unit2">
+                        <input type="radio" name="drop of location" id="storage_unit2" class="accent-[#00c7b1]">
+                        <span>Storage Unit</span>
+                    </label>
+                </label>
+
+                <!-- DROP OFF LOCATION 2 -->
+
+                <label for="drop off location">DROP OFF LOCATION :
+                    <input type="address" placeholder="Enter the drop off location"
+                        class="border border-[#00c7b1] rounded-lg w-full p-2 mt-2 outline-none">
+                </label>
+
+                <!-- Navigation Buttons -->
+
+                <div class="flex items-center justify-between">
+                    <button
+                        class="bg-transparent text-black border-2 border-[#00c7b1] font-bold rounded-lg px-3 py-2 hover:bg-[#00c7b1] hover:text-white">Back</button>
+                    <button id="nextSlide2"
+                        class="bg-[#00c7b1] px-3 py-2 border-2 border-[#00c7b1] hover:bg-transparent hover:text-black rounded-lg text-white font-bold">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+
+        <div id="step3">
+
+            <!-- File upload field slide 3 -->
+
+            <p>Drag and drop files here : </p>
+
+            <label for="file_input"
+                class="flex mt-2 flex-col items-center justify-center w-full max-w-md p-6 border-2 border-dashed border-[#00c7b1] rounded-2xl cursor-pointer bg-[#00c7b1]/10 hover:bg-[#00c7b1]/20 transition duration-300 ease-in-out">
+
+                <!-- Upload Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="#00c7b1" class="w-12 h-12 mb-3">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 16v-8m0 0l-3 3m3-3l3 3m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+
+                <!-- Text -->
+                <p class="text-[#00c7b1] font-semibold text-lg">Drag & drop files here</p>
+                <p class="text-gray-500 text-sm mt-1">or click to browse</p>
+
+                <!-- Hidden input -->
+                <input id="file_input" type="file" class="hidden">
+            </label>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
