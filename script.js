@@ -151,10 +151,10 @@ nextButtonStep4.addEventListener("click", () => {
         submissionCRMObj.price = grabInputValues("price");
         errorText.classList.add("hidden")
 
-        fetch("http://localhost:8000/api/submit-lead", {
-            method : "POST",
-            headers : {"Content-Type" : "application/json"},
-            body : JSON.stringify(submissionCRMObj)
+        fetch("https://smart-moving-backend-integration-o6oy276in.vercel.app/api/submit-lead", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(submissionCRMObj)
         }).then(res => res.json()).then(data => console.log("Sent to smartMoving : ", data)).catch(error => {
             console.error("There's something more : ", error);
         })
