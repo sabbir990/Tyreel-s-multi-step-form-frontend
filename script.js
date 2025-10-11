@@ -155,7 +155,12 @@ nextButtonStep4.addEventListener("click", () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(submissionCRMObj)
-        }).then(res => res.json()).then(data => console.log("Sent to smartMoving : ", data)).catch(error => {
+        }).then(res => res.json()).then(data => {
+            if(data.success){
+                document.getElementById("successful_warning").classList.remove("hidden");
+                document.getElementById("price").value = 0;
+            }
+        }).catch(error => {
             console.error("There's something more : ", error);
         })
     } else {
