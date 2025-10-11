@@ -26,27 +26,27 @@
 <body class="bg-[#f7f7f7] flex items-center justify-center text-[17px] p-2">
     <div class="font-montserrat p-8 rounded-2xl bg-white w-[50%]">
         <!-- Step 1 -->
-        <div id="step1" class="flex flex-col space-y-4 hidden">
+        <div id="step1" class="flex flex-col space-y-4">
             <div class="flex items-center justify-between space-x-4 w-full">
                 <label for="first name" class="w-full">First Name* : <br>
                     <input type="text" placeholder="Your first name.."
-                        class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full">
+                        class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full" id="firstName">
                 </label>
 
                 <label for="last name" class="w-full">Last Name : <br>
                     <input type="text" placeholder="Your last name.."
-                        class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full">
+                        class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full" id="lastName">
                 </label>
             </div>
             <label for="email" class="w-full">Email * : <br>
                 <input type="email" placeholder="Your e-mail.."
-                    class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full">
+                    class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full" id="userEmail">
             </label>
             <label for="phone" class="w-full">Phone * : <br>
                 <input type="phone" placeholder="Your phone.."
-                    class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full">
+                    class="border border-[#00c7b1] px-2 py-2 rounded-lg text-black mt-2 outline-none w-full" id="userPhone">
             </label>
-            <label for="communication method" class="flex flex-col space-y-2">
+            <label for="communication method" class="flex flex-col space-y-2" id="communication_method">
                 I'd preferred to be contacted via * : <br>
                 <label for="method1">
                     <input type="radio" name="contact_method" value="call" class="accent-[#00c7b1]" id="method1">
@@ -76,27 +76,27 @@
             <br><br>
             <div class="flex flex-col space-y-6">
                 <div class="flex justify-between">
-                    <label for="labor Only" class="flex flex-col space-y-2 flex-1"> Labor Only <br>
+                    <label for="labor_Only" class="flex flex-col space-y-2 flex-1" id="labor_only"> Labor Only <br>
                         <label for="Help_Moving_In">
-                            <input type="radio" name="labor Only" id="Help_Moving_In" value="Help Moving In"
+                            <input type="radio" name="labor_Only" id="Help_Moving_In" value="Help Moving In"
                                 class="accent-[#00c7b1]" />
                             <span>Help Moving In</span>
                         </label>
 
                         <label for="Help_Moving_Out">
-                            <input type="radio" name="labor Only" id="Help_Moving_Out" value="Help Moving Out"
+                            <input type="radio" name="labor_Only" id="Help_Moving_Out" value="Help Moving Out"
                                 class="accent-[#00c7b1]" />
                             <span>Help Moving Out</span>
                         </label>
 
                         <label for="Help_Moving_Out_&_In">
-                            <input type="radio" name="labor Only" id="Help_Moving_Out_&_In" value="Help Moving In"
+                            <input type="radio" name="labor_Only" id="Help_Moving_Out_&_In" value="Help Moving In"
                                 class="accent-[#00c7b1]" />
                             <span>Help Moving In</span>
                         </label>
                     </label>
 
-                    <label for="labor and truck" class="flex flex-col space-y-2 flex-1"> LABOR & TRUCK <br>
+                    <label for="labor and truck" class="flex flex-col space-y-2 flex-1" id="labor_and_truck"> LABOR & TRUCK <br>
                         <label for="Full_Move">
                             <input type="radio" name="labor_and_truck" id="Full_Move" value="Full Move"
                                 class="accent-[#00c7b1]" />
@@ -126,9 +126,9 @@
                 <!-- Moving time -->
 
                 <div>
-                    <label for="moving time">
+                    <label for="moving time"> MOVING TIME: 
                         <select name="moving time" id="moving_time"
-                            class="border border-[#00c7b1] p-2 rounded-lg w-full outline-none">
+                            class="border border-[#00c7b1] p-2 rounded-lg w-full outline-none mt-2">
                             <option value="Morning">Morning</option>
                             <option value="Mid-day">Mid-day</option>
                             <option value="Afternoon">Afternoon</option>
@@ -140,7 +140,7 @@
 
                 <!-- PICKUP LOCATION -->
 
-                <label for="pickup location" class="flex flex-col space-y-2 flex-1">PICKUP LOCATION: <br>
+                <label for="pickup location" class="flex flex-col space-y-2 flex-1" id="pickup_location">PICKUP LOCATION: <br>
                     <label for="Home_Apartment">
                         <input type="radio" name="pickup location" id="Home_Apartment" value="Home/ Apartment"
                             class="accent-[#00c7b1]" />
@@ -180,7 +180,7 @@
                 <div class="flex justify-between">
                     <!-- Elevator -->
 
-                    <label for="elevator" class="flex flex-col space-y-2 flex-1">EVEVATOR : <br>
+                    <label for="elevator" class="flex flex-col space-y-2 flex-1" id="elevator">EVEVATOR : <br>
                         <label for="yes">
                             <input type="radio" name="elevator" id="yes" class="accent-[#00c7b1]" />
                             <span>Yes</span>
@@ -193,7 +193,7 @@
 
                     <!-- APARTMENT -->
 
-                    <label for="apartment" class="flex flex-col space-y-2 flex-1">APARTMENT/HOME ROOMS: <br>
+                    <label for="apartment" class="flex flex-col space-y-2 flex-1" id="apartment">APARTMENT/HOME ROOMS: <br>
                         <label for="1 Bedroom/Studio">
                             <input type="radio" name="apartment" id="1 Bedroom/Studio" class="accent-[#00c7b1]">
                             <span>1 Bedroom/Studio</span>
@@ -218,7 +218,7 @@
 
                 <!-- DROP OFF LOCATION -->
 
-                <label for="drop of location" class="flex flex-col space-y-2"><span>DROP OFF LOCATION:</span>
+                <label for="drop of location" class="flex flex-col space-y-2" id="drop_off_location"><span>DROP OFF LOCATION:</span>
                     <label for="home_apartment2">
                         <input type="radio" name="drop of location" id="home_apartment2" class="accent-[#00c7b1]">
                         <span>Home/Apartment</span>
@@ -239,14 +239,14 @@
 
                 <label for="drop off location">DROP OFF LOCATION :
                     <input type="address" placeholder="Enter the drop off location"
-                        class="border border-[#00c7b1] rounded-lg w-full p-2 mt-2 outline-none">
+                        class="border border-[#00c7b1] rounded-lg w-full p-2 mt-2 outline-none" id="drop_off_location2">
                 </label>
 
                 <!-- Navigation Buttons -->
 
                 <div class="flex items-center justify-between">
                     <button
-                        class="bg-transparent text-black border-2 border-[#00c7b1] font-bold rounded-lg px-3 py-2 hover:bg-[#00c7b1] hover:text-white">Back</button>
+                        class="bg-transparent text-black border-2 border-[#00c7b1] font-bold rounded-lg px-3 py-2 hover:bg-[#00c7b1] hover:text-white" id="backBtnSlide2">Back</button>
                     <button id="nextSlide2"
                         class="bg-[#00c7b1] px-3 py-2 border-2 border-[#00c7b1] hover:bg-transparent hover:text-black rounded-lg text-white font-bold">Next</button>
                 </div>
@@ -255,30 +255,85 @@
 
         <!-- Step 3 -->
 
-        <div id="step3">
+        <div id="step3" class="flex flex-col space-y-4 hidden">
 
             <!-- File upload field slide 3 -->
 
-            <p>Drag and drop files here : </p>
+            <div>
+                <p>Drag and drop files here : </p>
 
-            <label for="file_input"
-                class="flex mt-2 flex-col items-center justify-center w-full max-w-md p-6 border-2 border-dashed border-[#00c7b1] rounded-2xl cursor-pointer bg-[#00c7b1]/10 hover:bg-[#00c7b1]/20 transition duration-300 ease-in-out">
+                <label for="file_input"
+                    class="flex mt-2 flex-col items-center justify-center w-full w-full p-6 border-2 border-dashed border-[#00c7b1] rounded-2xl cursor-pointer bg-[#00c7b1]/10 hover:bg-[#00c7b1]/20 transition duration-300 ease-in-out">
 
-                <!-- Upload Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="#00c7b1" class="w-12 h-12 mb-3">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 16v-8m0 0l-3 3m3-3l3 3m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                    <!-- Upload Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="#00c7b1" class="w-12 h-12 mb-3">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 16v-8m0 0l-3 3m3-3l3 3m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
 
-                <!-- Text -->
-                <p class="text-[#00c7b1] font-semibold text-lg">Drag & drop files here</p>
-                <p class="text-gray-500 text-sm mt-1">or click to browse</p>
+                    <!-- Text -->
+                    <p class="text-[#00c7b1] font-semibold text-lg">Drag & drop files here</p>
+                    <p class="text-gray-500 text-sm mt-1">or click to browse</p>
 
-                <!-- Hidden input -->
-                <input id="file_input" type="file" class="hidden">
-            </label>
+                    <!-- Hidden input -->
+                    <input id="file_input" type="file" class="hidden">
+
+                    <p class="font-bold text-sm mt-2 hidden" id="image_description">
+                        ⎙ file's name
+                    </p>
+                </label>
+            </div>
+
+            <div class="flex flex-col space-y-4">
+                <h4 class="text-3xl text-center font-bold mt-4">No pictures? No problem. Input your inventory list.</h4>
+
+                <label for="inventory_list"> INVENTORY LIST : <br>
+                    <textarea name="inventory_list" id="inventory_listing_input"
+                        class="border border-[#00c7b1] rounded-lg w-full mt-2 outline-none p-2"></textarea>
+                </label>
+            </div>
+
+            <!-- Navigation buttons slide 3 -->
+
+            <div class="flex items-center justify-between">
+                <button
+                    class="bg-transparent text-black border-2 border-[#00c7b1] font-bold rounded-lg px-3 py-2 hover:bg-[#00c7b1] hover:text-white" id="backBtnSlide3">Back</button>
+                <button id="nextSlide3"
+                    class="bg-[#00c7b1] px-3 py-2 border-2 border-[#00c7b1] hover:bg-transparent hover:text-black rounded-lg text-white font-bold">Next</button>
+            </div>
+
         </div>
+
+        <!-- Step 4 -->
+
+        <div id="step4" class=" flex flex-col space-y-4 hidden">
+            <label for="price">Name Your Price: * <br>
+                <input type="number" id="price" name="price" placeholder="Enter price" min="0" step="0.01"
+                    class="border border-[#00c7b1] rounded-lg p-2 w-full mt-2 outline-none" />
+            </label>
+
+            <!-- Navigation step 4 -->
+
+            <div class="flex items-center justify-between">
+                <button
+                    class="bg-transparent text-black border-2 border-[#00c7b1] font-bold rounded-lg px-3 py-2 hover:bg-[#00c7b1] hover:text-white" id="backBtnSlide4">Back</button>
+                <button id="nextSlide4"
+                    class="bg-[#00c7b1] px-3 py-2 border-2 border-[#00c7b1] hover:bg-transparent hover:text-black rounded-lg text-white font-bold">Next</button>
+            </div>
+        </div>
+
+        <!-- Submission welcome -->
+
+        <div class="flex flex-col space-y-4 hidden">
+            <h4 class="text-center font-bold text-3xl mt-20">Thank You for Your Bid</h1>
+                <p class="text-center">Thanks for submitting your inventory and price bid to Movn.bid. A member of our team of professional movers will be in touch soon to confirm moving details and guaranteed pricing.</p>
+        </div>
+
+        <!-- Error Text -->
+
+        <p class="text-red-600 text-center mt-20 text-sm hidden" id="error_text">Please make sure to fill all the fields! The required fields are marked with ( * )</p>
+
     </div>
 
 
