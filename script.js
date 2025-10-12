@@ -151,7 +151,7 @@ nextButtonStep4.addEventListener("click", () => {
         submissionCRMObj.price = grabInputValues("price");
         errorText.classList.add("hidden")
 
-        fetch("https://smart-moving-backend-integration-bwmaw2ggt.vercel.app/api/submit-lead", {
+        fetch("https://smart-moving-backend-integration.vercel.app/api/submit-lead", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(submissionCRMObj)
