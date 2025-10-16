@@ -160,7 +160,7 @@ nextButtonStep4.addEventListener("click", () => {
                 document.getElementById("successful_warning").classList.remove("hidden");
                 document.getElementById("devider").classList.remove("hidden");
                 document.getElementById("returnButtonContainer").classList.remove("hidden");
-                document.getElementById("step4_buttons").classList.add("hidden")
+                document.getElementById("step4_buttons").classList.add("hidden");
                 document.getElementById("returnButton").addEventListener("click", () => {
                     containerStep4.classList.add("hidden");
                     containerStep1.classList.remove("hidden");
