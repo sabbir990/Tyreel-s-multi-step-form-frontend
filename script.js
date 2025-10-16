@@ -156,8 +156,15 @@ nextButtonStep4.addEventListener("click", () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(submissionCRMObj)
         }).then(res => res.json()).then(data => {
-            if(data.success){
+            if (data.success) {
                 document.getElementById("successful_warning").classList.remove("hidden");
+                document.getElementById("devider").classList.remove("hidden");
+                document.getElementById("returnButtonContainer").classList.remove("hidden");
+                document.getElementById("returnButton").addEventListener("click", () => {
+                    containerStep4.classList.add("hidden");
+                    containerStep1.classList.remove("hidden");
+
+                })
                 document.getElementById("price").value = 0;
             }
         }).catch(error => {
