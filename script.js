@@ -163,7 +163,9 @@ nextButtonStep4.addEventListener("click", () => {
                 document.getElementById("returnButton").addEventListener("click", () => {
                     containerStep4.classList.add("hidden");
                     containerStep1.classList.remove("hidden");
-
+                    document.getElementById("successful_warning").classList.add("hidden");
+                    document.getElementById("devider").classList.add("hidden");
+                    document.getElementById("returnButtonContainer").classList.add("hidden");
                 })
                 document.getElementById("price").value = 0;
             }
