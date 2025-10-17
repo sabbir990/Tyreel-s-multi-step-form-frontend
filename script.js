@@ -5,13 +5,12 @@ const priceField = document.getElementById("price");
 const nextButtonStep1 = document.getElementById("nextSlide1");
 const nextButtonStep2 = document.getElementById("nextSlide2");
 const nextButtonStep3 = document.getElementById("nextSlide3");
-const nextButtonStep4 = document.getElementById("nextSlide4");
 const containerStep1 = document.getElementById("step1");
 const containerStep2 = document.getElementById("step2");
 const containerStep3 = document.getElementById("step3");
 const containerStep4 = document.getElementById("step4");
 const errorText = document.getElementById("error_text");
-const backButtonsArray = ["backBtnSlide2", "backBtnSlide3", "backBtnSlide4"];
+const backButtonsArray = ["backBtnSlide2", "backBtnSlide3"];
 
 const submissionCRMObj = {
     first_name: "",
@@ -32,7 +31,6 @@ const submissionCRMObj = {
     drop_off_location_2: "",
     files: "",
     inventory_list: "",
-    price: ""
 }
 
 // document.getElementById("datePicker").addEventListener("change", () => {
@@ -128,7 +126,7 @@ nextButtonStep2.addEventListener("click", () => {
 
 nextButtonStep3.addEventListener("click", () => {
     containerStep3.classList.add("hidden");
-    containerStep4.classList.remove("hidden");
+    // containerStep4.classList.remove("hidden");
     const imageInputField = document.getElementById("file_input");
     const imageDescription = document.getElementById("image_description");
 
@@ -144,36 +142,66 @@ nextButtonStep3.addEventListener("click", () => {
 
     })
 
-})
+    errorText.classList.add("hidden");
 
-nextButtonStep4.addEventListener("click", () => {
-    if (grabInputValues("price")) {
-        submissionCRMObj.price = grabInputValues("price");
-        errorText.classList.add("hidden")
+    fetch("https://minimal-vercel-api-psi.vercel.app/submit-data", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submissionCRMObj)
+    }).then(res => res.json()).then(data => {
+        if (data.success) {
+            console.log(data)
+            // document.getElementById("successful_warning").classList.remove("hidden");
+            // document.getElementById("devider").classList.remove("hidden");
+            // document.getElementById("returnButtonContainer").classList.remove("hidden");
+            // document.getElementById("step4_buttons").classList.add("hidden");
+            // document.getElementById("returnButton").addEventListener("click", () => {
+            //     containerStep4.classList.add("hidden");
+            //     containerStep1.classList.remove("hidden");
+            //     document.getElementById("successful_warning").classList.add("hidden");
+            //     document.getElementById("devider").classList.add("hidden");
+            //     document.getElementById("returnButtonContainer").classList.add("hidden");
+            // })
+            // document.getElementById("price").value = 0;
 
-        fetch("https://minimal-vercel-api-psi.vercel.app/submit-data", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(submissionCRMObj)
-        }).then(res => res.json()).then(data => {
-            if (data.success) {
-                document.getElementById("successful_warning").classList.remove("hidden");
-                document.getElementById("devider").classList.remove("hidden");
-                document.getElementById("returnButtonContainer").classList.remove("hidden");
-                document.getElementById("step4_buttons").classList.add("hidden");
-                document.getElementById("returnButton").addEventListener("click", () => {
-                    containerStep4.classList.add("hidden");
-                    containerStep1.classList.remove("hidden");
-                    document.getElementById("successful_warning").classList.add("hidden");
-                    document.getElementById("devider").classList.add("hidden");
-                    document.getElementById("returnButtonContainer").classList.add("hidden");
-                })
-                document.getElementById("price").value = 0;
-            }
-        }).catch(error => {
-            console.error("There's something more : ", error);
-        })
-    } else {
+            containerStep4.classList.remove("hidden");
+        }
+    }).catch(error => {
+        console.error("There's something more : ", error);
         errorText.classList.remove("hidden");
-    }
+        errorText.textContent = "Something's wrong. Please try again later.";
+    })
+
 })
+
+// nextButtonStep4.addEventListener("click", () => {
+//     if (grabInputValues("price")) {
+//         submissionCRMObj.price = grabInputValues("price");
+//         errorText.classList.add("hidden")
+
+//         fetch("https://minimal-vercel-api-psi.vercel.app/submit-data", {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify(submissionCRMObj)
+//         }).then(res => res.json()).then(data => {
+//             if (data.success) {
+//                 document.getElementById("successful_warning").classList.remove("hidden");
+//                 document.getElementById("devider").classList.remove("hidden");
+//                 document.getElementById("returnButtonContainer").classList.remove("hidden");
+//                 document.getElementById("step4_buttons").classList.add("hidden");
+//                 document.getElementById("returnButton").addEventListener("click", () => {
+//                     containerStep4.classList.add("hidden");
+//                     containerStep1.classList.remove("hidden");
+//                     document.getElementById("successful_warning").classList.add("hidden");
+//                     document.getElementById("devider").classList.add("hidden");
+//                     document.getElementById("returnButtonContainer").classList.add("hidden");
+//                 })
+//                 document.getElementById("price").value = 0;
+//             }
+//         }).catch(error => {
+//             console.error("There's something more : ", error);
+//         })
+//     } else {
+//         errorText.classList.remove("hidden");
+//     }
+// })
