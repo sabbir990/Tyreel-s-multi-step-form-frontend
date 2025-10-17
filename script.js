@@ -177,6 +177,7 @@ nextButtonStep3.addEventListener("click", () => {
 document.getElementById("returnButtonContainer").addEventListener("click", () => {
     containerStep4.classList.add("hidden");
     containerStep1.classList.remove("hidden");
+    window.location.reload();
 })
 
 // nextButtonStep4.addEventListener("click", () => {
