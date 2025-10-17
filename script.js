@@ -165,11 +165,6 @@ nextButtonStep3.addEventListener("click", () => {
             // document.getElementById("price").value = 0;
 
             containerStep4.classList.remove("hidden");
-
-            document.getElementById("returnButtonContainer").addEventListener("click", () => {
-                containerStep4.classList.add("hidden");
-                containerStep1.classList.remove("hidden");
-            })
         }
     }).catch(error => {
         console.error("There's something more : ", error);
@@ -177,6 +172,11 @@ nextButtonStep3.addEventListener("click", () => {
         errorText.textContent = "Something's wrong. Please try again later.";
     })
 
+})
+
+document.getElementById("returnButtonContainer").addEventListener("click", () => {
+    containerStep4.classList.add("hidden");
+    containerStep1.classList.remove("hidden");
 })
 
 // nextButtonStep4.addEventListener("click", () => {
