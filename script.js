@@ -11,6 +11,7 @@ const containerStep3 = document.getElementById("step3");
 const containerStep4 = document.getElementById("step4");
 const errorText = document.getElementById("error_text");
 const backButtonsArray = ["backBtnSlide2", "backBtnSlide3"];
+const spinner = document.getElementById("spinner");
 
 const submissionCRMObj = {
     first_name: "",
@@ -125,6 +126,8 @@ nextButtonStep2.addEventListener("click", () => {
 })
 
 nextButtonStep3.addEventListener("click", () => {
+    containerStep3.classList.add("hidden");
+    spinner.classList.remove("hidden");
     // containerStep4.classList.remove("hidden");
     const imageInputField = document.getElementById("file_input");
     const imageDescription = document.getElementById("image_description");
@@ -162,11 +165,12 @@ nextButtonStep3.addEventListener("click", () => {
             //     document.getElementById("devider").classList.add("hidden");
             //     document.getElementById("returnButtonContainer").classList.add("hidden");
             // })
-            // document.getElementById("price").value = 0;
-            containerStep3.classList.add("hidden");
+            // document.getElementById("price").value = 0;f
+            spinner.classList.add("hidden");
             containerStep4.classList.remove("hidden");
         }
     }).catch(error => {
+        spinner.classList.add("hidden");
         console.error("There's something more : ", error);
         errorText.classList.remove("hidden");
         errorText.textContent = "Something's wrong. Please try again later.";

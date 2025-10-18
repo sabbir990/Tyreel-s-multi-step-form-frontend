@@ -340,6 +340,15 @@
         <p class="text-red-600 text-center mt-6 text-sm hidden" id="error_text">Please make sure to fill all the
             fields! The required fields are marked with ( * )</p>
 
+        <div id="spinner" class="hidden">
+            <div class="min-h-[120px] flex items-center justify-center">
+                <div role="status" aria-live="polite" class="flex flex-col items-center">
+                    <div class="w-12 h-12 border-4 border-gray-200 border-t-[#00c7b1] rounded-full animate-spin"></div>
+                    <span class="sr-only">Loading…</span>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
