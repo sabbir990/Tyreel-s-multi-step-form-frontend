@@ -12,6 +12,8 @@ const containerStep4 = document.getElementById("step4");
 const errorText = document.getElementById("error_text");
 const backButtonsArray = ["backBtnSlide2", "backBtnSlide3"];
 const spinner = document.getElementById("spinner");
+const imageInputField = document.getElementById("file_input");
+const imageDescription = document.getElementById("image_description");
 
 const submissionCRMObj = {
     first_name: "",
@@ -125,58 +127,78 @@ nextButtonStep2.addEventListener("click", () => {
 
 })
 
-nextButtonStep3.addEventListener("click", () => {
-    containerStep3.classList.add("hidden");
-    spinner.classList.remove("hidden");
-    // containerStep4.classList.remove("hidden");
-    const imageInputField = document.getElementById("file_input");
-    const imageDescription = document.getElementById("image_description");
+submissionCRMObj.inventory_list = grabInputValues("inventory_listing_input");
+submissionCRMObj.files = imageInputField.files[0];
 
-    submissionCRMObj.inventory_list = grabInputValues("inventory_listing_input");
-    submissionCRMObj.files = imageInputField.files[0];
+imageInputField.addEventListener("change", () => {
 
-    imageInputField.addEventListener("change", () => {
+    if (imageInputField.files.length > 0) {
+        imageDescription.classList.remove("hidden");
+        document.getElementById("uploadInstruction").classList.add("hidden")
+        imageDescription.textContent = `⎙ ${imageInputField.files[0].name}`;
+    }
+})
 
-        if (imageInputField.files.length > 0) {
-            imageDescription.classList.remove("hidden");
-            imageDescription.textContent = `⎙ ${imageInputField.files[0].name}`;
-            console.log(imageInputField.files[0].name)
-        }
+const uploadImageToServer = (file) => {
+    const APIKey = "9a0f28ebd495d6b40b1493b0d582067c";
+    const formData = new FormData();
+    formData.append("image", file);
 
-    })
-
-    errorText.classList.add("hidden");
-
-    fetch("https://minimal-vercel-api-psi.vercel.app/submit-data", {
+    return fetch(`https://api.imgbb.com/1/upload?key=${APIKey}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(submissionCRMObj)
+        body: formData
     }).then(res => res.json()).then(data => {
         if (data.success) {
-            console.log(data)
-            // document.getElementById("successful_warning").classList.remove("hidden");
-            // document.getElementById("devider").classList.remove("hidden");
-            // document.getElementById("returnButtonContainer").classList.remove("hidden");
-            // document.getElementById("step4_buttons").classList.add("hidden");
-            // document.getElementById("returnButton").addEventListener("click", () => {
-            //     containerStep4.classList.add("hidden");
-            //     containerStep1.classList.remove("hidden");
-            //     document.getElementById("successful_warning").classList.add("hidden");
-            //     document.getElementById("devider").classList.add("hidden");
-            //     document.getElementById("returnButtonContainer").classList.add("hidden");
-            // })
-            // document.getElementById("price").value = 0;f
+            return data.data.url;
+        } else {
+            throw new Error("Image upload failed");
+        }
+    });
+}
+
+nextButtonStep3.addEventListener("click", async () => {
+    containerStep3.classList.add("hidden");
+    spinner.classList.remove("hidden");
+    errorText.classList.add("hidden");
+
+    const imageFile = imageInputField.files[0];
+
+    try {
+        let imageURL = "";
+
+        if (imageFile) {
+            // wait for image upload to complete
+            imageURL = await uploadImageToServer(imageFile);
+        }
+
+        // assign URL to the object
+        submissionCRMObj.files = imageURL;
+
+        // now send the POST request only after imageURL is ready
+        const response = await fetch("https://minimal-vercel-api-psi.vercel.app/submit-data", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(submissionCRMObj),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            console.log("✅ Success:", data);
             spinner.classList.add("hidden");
             containerStep4.classList.remove("hidden");
+        } else {
+            throw new Error("Server responded with failure.");
         }
-    }).catch(error => {
+
+    } catch (error) {
+        console.error("There's something more:", error);
         spinner.classList.add("hidden");
-        console.error("There's something more : ", error);
         errorText.classList.remove("hidden");
         errorText.textContent = "Something's wrong. Please try again later.";
-    })
+    }
+});
 
-})
 
 document.getElementById("returnButtonContainer").addEventListener("click", () => {
     containerStep4.classList.add("hidden");
