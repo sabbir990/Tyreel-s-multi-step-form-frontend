@@ -125,7 +125,6 @@ nextButtonStep2.addEventListener("click", () => {
 })
 
 nextButtonStep3.addEventListener("click", () => {
-    containerStep3.classList.add("hidden");
     // containerStep4.classList.remove("hidden");
     const imageInputField = document.getElementById("file_input");
     const imageDescription = document.getElementById("image_description");
@@ -138,6 +137,7 @@ nextButtonStep3.addEventListener("click", () => {
         if (imageInputField.files.length > 0) {
             imageDescription.classList.remove("hidden");
             imageDescription.textContent = `⎙ ${imageInputField.files[0].name}`;
+            console.log(imageInputField.files[0].name)
         }
 
     })
@@ -163,7 +163,7 @@ nextButtonStep3.addEventListener("click", () => {
             //     document.getElementById("returnButtonContainer").classList.add("hidden");
             // })
             // document.getElementById("price").value = 0;
-
+            containerStep3.classList.add("hidden");
             containerStep4.classList.remove("hidden");
         }
     }).catch(error => {
