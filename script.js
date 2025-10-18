@@ -186,6 +186,7 @@ nextButtonStep3.addEventListener("click", async () => {
         if (data.success) {
             console.log("✅ Success:", data);
             spinner.classList.add("hidden");
+            console.log(data)
             containerStep4.classList.remove("hidden");
         } else {
             throw new Error("Server responded with failure.");
